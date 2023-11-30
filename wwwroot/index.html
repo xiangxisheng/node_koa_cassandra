@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -30,15 +30,16 @@
 <script src="./js/vue.global.js"></script>
 <script src="./js/vue-router.global.js"></script>
 <script type="module">
+  import { P } from 'firadio';
   const imports = {};
   const routes = [
-    { path: '/', component: (await import('./page/home.js')).default },
-    { path: '/login', component: (await import('./page/sign.js')).default },
+    { path: '/', component: P('home') },
+    { path: '/login', component: P('sign') },
     {
       path: '/panel',
-      component: (await import('./page/panel.js')).default,
+      component: P('panel'),
       children: [
-        { path: 'table', component: (await import('./page/panel/table.js')).default },
+        { path: 'table', component: P('panel/table') },
       ]
     },
   ];

@@ -31,4 +31,7 @@ async function fetchDataByPathname(_pathname, _param) {
   }
 };
 
-export { fetchDataByPathname };
+async function P(name) {
+  return (await import(`../page/${name}.js`)).default;
+};
+export { fetchDataByPathname, P };

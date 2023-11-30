@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>node_koa_cassandra</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/adminlte.min.css">
+</head>
+
+<body class="hold-transition">
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</body>
+
+<script type="importmap">
+  {
+    "imports": {
+      "firadio": "./js/firadio.js"
+    }
+  }
+</script>
+<script src="./js/vue.global.js"></script>
+<script src="./js/vue-router.global.js"></script>
+<script type="module">
+  const imports = {};
+  const routes = [
+    { path: '/', component: (await import('./page/home.js')).default },
+    { path: '/login', component: (await import('./page/sign.js')).default },
+    {
+      path: '/panel',
+      component: (await import('./page/panel.js')).default,
+      children: [
+        { path: 'table', component: (await import('./page/panel/table.js')).default },
+      ]
+    },
+  ];
+  const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes, // `routes: routes` 的缩写
+  });
+  const app = Vue.createApp({
+    data() {
+      return {
+      }
+    },
+    async created() {
+    },
+    methods: {
+    }
+  });
+  app.use(router);
+  app.mount('#app');
+</script>
+
+</html>

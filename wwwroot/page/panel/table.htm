@@ -1,0 +1,19 @@
+<form @submit.prevent="fetchData()" onsubmit="return false;" :disabled="loading">
+<!--
+<select v-model="pathname" :disabled="loading" @change="pathname_change" required>
+<option v-for="action of actions" :value="action.pathname">{{action.title}}</option>
+</select>
+-->
+  <input v-model="cql" />
+  <button :disabled="loading">Submit</button>
+  <table border="1">
+    <thead align="center">
+      <td v-for="c in columns">{{c.name}}</td>
+    </thead>
+    <tr v-for="r in rows">
+      <td v-for="c in columns">{{r[c.name]}}</td>
+    </tr>
+  </table>
+</form>
+<hr />
+<textarea disabled="disabled" style="width:100%" rows="15">{{message}}</textarea>

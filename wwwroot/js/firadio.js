@@ -25,7 +25,7 @@ async function fetchDataByPathname(_pathname, _param) {
     if (oResponse.status !== 200) {
       return { message: oResponse.statusText };
     }
-    return await (oResponse).json();
+    return await oResponse.json();
   } catch (e) {
     return e;
   }

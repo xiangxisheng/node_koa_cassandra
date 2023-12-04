@@ -1,4 +1,4 @@
-<div class="sidebar-mini layout-fixed">
+<div class="sidebar-mini layout-fixed" :class="sidebar_collapse?'sidebar-collapse':''">
 
   <div class="wrapper">
 
@@ -12,7 +12,7 @@
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="javascript:void(0)" role="button"><i
+          <a class="nav-link" data-widget="pushmenu" href="javascript:void(0)" v-on:click="sidebar_collapse_switch()" role="button"><i
               class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
@@ -73,7 +73,7 @@
                 </p>
               </router-link>
             </li>
-            <li class="nav-item menu-close">
+            <li class="nav-item">
               <a href="javascript:void(0)" class="nav-link">
                 <i class="nav-icon far fa-envelope"></i>
                 <p>

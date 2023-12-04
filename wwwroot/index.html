@@ -27,19 +27,18 @@
     }
   }
 </script>
-<script src="./js/vue.global.js"></script>
-<script src="./js/vue-router.global.js"></script>
+<script src="./js/vue.global.prod.js"></script>
+<script src="./js/vue-router.global.prod.js"></script>
 <script type="module">
   import { P } from 'firadio';
-  const imports = {};
   const routes = [
-    { path: '/', component: P('home') },
-    { path: '/login', component: P('sign') },
+    { path: '/', component: await P('home') },
+    { path: '/login', component: await P('sign') },
     {
       path: '/panel',
-      component: P('panel'),
+      component: await P('panel'),
       children: [
-        { path: 'table', component: P('panel/table') },
+        { path: 'table', component: await P('panel/table') },
       ]
     },
   ];
@@ -60,5 +59,9 @@
   app.use(router);
   app.mount('#app');
 </script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
 
 </html>
